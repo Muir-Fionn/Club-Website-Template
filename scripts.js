@@ -6,10 +6,52 @@
  document.onreadystatechange = () => {
   if (document.readyState === 'complete') {
     upcomingFill();
+    memberFill();
+    galleryFill();
+    aboutFill();
+
+    navClickEvents(mainNav);
+    navClickEvents(join);
+    galleryClickEvents();
   }
 };
 
 /*--- DOM Events functions ---*/
+function navClickEvents(nav) {
+  var listItems = nav.querySelectorAll('span');
+
+  for(var i=0; i < listItems.length; i++) {
+    var li = listItems[i];
+    li.addEventListener('click', function() {
+      var old = document.querySelector('.active');
+      old.classList.remove('active');
+      this.classList.add('active');
+
+      var oldId = old.innerText.split(' ')[0].toLowerCase();
+      var oldEl = document.getElementById(oldId);
+      oldEl.style.display = 'none';
+
+      var id = this.innerText.split(' ')[0].toLowerCase();
+      var el = document.getElementById(id);
+      el.style.display = 'flex';
+    })
+  }
+}
+
+function galleryClickEvents() {
+  var target = photos.querySelectorAll('img');
+
+  for (var i = 0; i < target.length; i++) {
+    target[i].addEventListener('click', function(){
+      if(!this.classList.contains('focus')){
+        target.forEach(function(el) {
+          el.classList.remove('focus');
+        });
+      }
+      this.classList.toggle('focus');
+    });
+  }
+}
 
 
 /*-- Page Manipulation functions --*/
@@ -32,18 +74,14 @@ function upcomingFill() {
 
 function galleryFill() {
     var header = makeElement('h1', 'title', 'Gallery');
-    var nav = makeElement('ul', 'galleryNav', null);
     var display = makeElement('div', 'photos', null);
 
     for(var name in gallery){
-      var listItem =  makeElement('li', null, name);
-      nav.appendChild(listItem);
-
       var photoDiv = fillPhotos(gallery[name], name);
       display.appendChild(photoDiv);
     }
 
-    appendChildren(photos, header, nav, display);
+    appendChildren(photos, header, display);
 }
 
 function aboutFill() {
@@ -123,10 +161,20 @@ function fillFromObject(arr, name) {
   var list = makeElement('ul', name, null);
 
   arr.forEach(function(obj) {
+    var section = makeElement('ul', null, null);
     for(var info in obj) {
-      var item = makeElement('li', info, obj[info]);
-      list.appendChild(item);
+
+      if(info == 'url') {
+        var item = makeElement('li', info, null);
+        var link = makeElement('a', null, obj[info]);
+        link.href = obj[info];
+        item.appendChild(link);
+      }else {
+        var item = makeElement('li', info, obj[info]);
+      }
+      section.appendChild(item);
     }
+    list.appendChild(section);
   });
 
   appendChildren(div, header, list);

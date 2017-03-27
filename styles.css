@@ -4,8 +4,15 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: 'Droid Sans', sans-serif;
+}
+
+h1 {
+  font-family: 'Eagle Lake', cursive;
+}
+
 a {
-  text-decoration: none;
   color: inherit;
 }
 
@@ -61,10 +68,14 @@ a {
   width: auto;
   display: inline-block;
   padding: 2%;
+  white-space: nowrap;
+}
+
+.nav li, .photos img {
+  cursor: pointer;
 }
 
 .join {
-  display: none;
   width: 100%;
   padding: 5%;
 }
@@ -86,14 +97,19 @@ a {
   text-align: center;
 }
 
-.events {
-  display: flex;
+.section, .join {
+  width: 100%;
+  padding: 5%;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  padding: 5%;
 }
+
+.events {
+  display: flex;
+}
+
 
 .event {
   padding: 5%;
@@ -112,7 +128,8 @@ a {
 }
 
 .subtitle {
-  margin-bottom: 2%;
+  margin: 2% auto;
+  text-transform: capitalize;
 }
 
 .event .subtitle {
@@ -139,14 +156,111 @@ a {
   color: #A8763E;
 }
 
+.members .subtitle {
+  border-bottom: 1px solid;
+}
+
+.members div {
+  width: 100%;
+  margin: 2% 0;
+}
+
+.members div > ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.members ul > ul {
+  width: auto;
+  padding: 2%;
+  margin: 0 1%;
+  list-style-type: none;
+}
+
+.contacts li:before {
+  content: attr(class) ': ';
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.resources li {
+  text-align: center;
+}
+
+.rules ul {
+  padding: 2% 5%;
+}
+
+.rules li {
+  list-style: decimal outside;
+  padding-left: 1em;
+}
+
+.galleryNav {
+  width: 100%;
+  text-align: center;
+}
+
+.galleryNav li {
+  width: auto;
+  display: inline-block;
+  padding: 2%;
+  white-space: nowrap;
+}
+
+.photos {
+  width: 90%;
+}
+
+.meet, .study, .classes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.photos img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  border: 5px solid transparent;
+}
+
+.about p {
+  margin: 1% 0;
+  text-indent: 3em;
+  line-height: 1.5em;
+}
+
+.focus {
+  width: 100%;
+}
+
 @media only screen and (min-width: 768px){
   .join {
     width: 600px;
     margin: auto;
   }
 
-  .events {
+  .section {
     width: 80%;
     margin: auto;
+  }
+
+  .photos {
+    width: 80%;
+  }
+
+  .photos img {
+    width: 220px;
+    height: 150px;
+    max-height: 150px;
+    object-fit: cover;
+  }
+
+  .photos .focus {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: scale-down;
   }
 }

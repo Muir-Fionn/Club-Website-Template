@@ -7,7 +7,8 @@ var upcoming = document.querySelector('.events');
 var photos = document.querySelector('.gallery');
 var about = document.querySelector('.about');
 var members =  document.querySelector('.members');
-var join = document.querySelector('.join');
+var join = document.querySelector('.btn-join');
+var mainNav = document.querySelector('.nav');
 
 /*--- Div Variable Arrays and Objects ---*/
 var events = [
@@ -51,7 +52,7 @@ var events = [
 ];
 
 var gallery = {
-  meetGreet: [
+  meet: [
     {
       title: 'January 2017 Meet and Greet',
       url: 'http://www.cowerks.com/wp-content/uploads/2016/07/IMG_3552-700x500.jpg'
@@ -65,7 +66,7 @@ var gallery = {
       url: 'https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F28748442%2F192688563840%2F1%2Foriginal.jpg?h=230&w=460&rect=22%2C4%2C692%2C346&s=17b1ecf54b0fa3a5c4e142a585bfc7cf'
     }
   ],
-  studyGroup: [
+  study: [
     {
       title: 'January 2017 Full-Stack Study Group',
       url: 'https://cdn-images-1.medium.com/max/800/1*TwdPGVi5n7pW87h-Wl4aNg.jpeg'
